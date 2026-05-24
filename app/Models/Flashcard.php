@@ -19,6 +19,8 @@ class Flashcard extends Model
         'deck_name',
     ];
 
+    // protected $fillable = ['user_id', 'question', 'answer', 'deck_name'];
+
     /**
      * Get the student user who owns the flashcard deck.
      */

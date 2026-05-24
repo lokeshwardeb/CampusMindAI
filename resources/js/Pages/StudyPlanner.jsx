@@ -1,61 +1,65 @@
-import React, { useState } from 'react';
-// import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, useForm, usePage } from '@inertiajs/react';
+// import React, { useState } from 'react';
+// // import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+// import { Head, useForm, usePage } from '@inertiajs/react';
 
+
+import React, { useState, useEffect } from 'react';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import { Head, useForm, usePage } from '@inertiajs/react';
 
 // --- MOCK INERTIA / LAYOUT INTEGRATION FOR PREVIEW COMPILATION ---
 // This allows the component to preview perfectly in the browser canvas while
 // retaining the identical form-state structure of your Laravel backend.
 
- function AuthenticatedLayout({ children }) {
-    const navItems = [
-        { name: 'Dashboard', icon: '📊', active: false },
-        { name: 'AI Chat', icon: '💬', active: false },
-        { name: 'Summarizer', icon: '📝', active: false },
-        { name: 'Quiz Generator', icon: '🎯', active: false },
-        { name: 'Flashcards', icon: '📇', active: false },
-        { name: 'Study Planner', icon: '📅', active: true },
-        { name: 'Notes', icon: '📓', active: false },
-        { name: 'History', icon: '⏳', active: false },
-    ];
+//  function AuthenticatedLayout({ children }) {
+//     const navItems = [
+//         { name: 'Dashboard', icon: '📊', active: false },
+//         { name: 'AI Chat', icon: '💬', active: false },
+//         { name: 'Summarizer', icon: '📝', active: false },
+//         { name: 'Quiz Generator', icon: '🎯', active: false },
+//         { name: 'Flashcards', icon: '📇', active: false },
+//         { name: 'Study Planner', icon: '📅', active: true },
+//         { name: 'Notes', icon: '📓', active: false },
+//         { name: 'History', icon: '⏳', active: false },
+//     ];
 
-    return (
-        <div className="flex min-h-screen bg-slate-50 text-slate-800 font-sans w-full">
-            {/* Sidebar */}
-            <aside className="w-64 bg-[#0B132B] text-slate-300 flex flex-col justify-between p-4 sticky top-0 h-screen shrink-0 hidden md:flex">
-                <div>
-                    <div className="flex items-center gap-2 px-3 py-4 mb-4">
-                        <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white">C</div>
-                        <span className="font-bold text-lg text-white tracking-wide">CampusMind AI</span>
-                    </div>
-                    <nav className="space-y-1">
-                        {navItems.map((item) => (
-                            <button
-                                key={item.name}
-                                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all text-left ${
-                                    item.active 
-                                        ? 'bg-blue-600 text-white shadow-md' 
-                                        : 'hover:bg-slate-800 hover:text-white'
-                                }`}
-                            >
-                                <span>{item.icon}</span>
-                                {item.name}
-                            </button>
-                        ))}
-                    </nav>
-                </div>
-                <div className="pt-4 border-t border-slate-800 text-xs text-slate-500">
-                    Your Study Companion v1.0
-                </div>
-            </aside>
+//     return (
+//         <div className="flex min-h-screen bg-slate-50 text-slate-800 font-sans w-full">
+//             {/* Sidebar */}
+//             <aside className="w-64 bg-[#0B132B] text-slate-300 flex flex-col justify-between p-4 sticky top-0 h-screen shrink-0 hidden md:flex">
+//                 <div>
+//                     <div className="flex items-center gap-2 px-3 py-4 mb-4">
+//                         <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white">C</div>
+//                         <span className="font-bold text-lg text-white tracking-wide">CampusMind AI</span>
+//                     </div>
+//                     <nav className="space-y-1">
+//                         {navItems.map((item) => (
+//                             <button
+//                                 key={item.name}
+//                                 className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all text-left ${
+//                                     item.active 
+//                                         ? 'bg-blue-600 text-white shadow-md' 
+//                                         : 'hover:bg-slate-800 hover:text-white'
+//                                 }`}
+//                             >
+//                                 <span>{item.icon}</span>
+//                                 {item.name}
+//                             </button>
+//                         ))}
+//                     </nav>
+//                 </div>
+//                 <div className="pt-4 border-t border-slate-800 text-xs text-slate-500">
+//                     Your Study Companion v1.0
+//                 </div>
+//             </aside>
 
-            {/* Main Content Area */}
-            <main className="flex-1 p-8 overflow-y-auto w-full">
-                {children}
-            </main>
-        </div>
-    );
-}
+//             {/* Main Content Area */}
+//             <main className="flex-1 p-8 overflow-y-auto w-full">
+//                 {children}
+//             </main>
+//         </div>
+//     );
+// }
 
 // Custom simulated Inertia Form helper to satisfy compiler while keeping local previews fully functional
 function useSimulatedForm(initialData, onSimulatedSubmit) {
@@ -169,7 +173,17 @@ export default function App() {
     };
 
     return (
-        <AuthenticatedLayout>
+        <AuthenticatedLayout
+        
+               header={
+                <h2 className="text-xl font-semibold leading-tight text-gray-800">
+                    Dashboard
+                </h2>
+            }
+        >
+            <Head title="Dashboard" />
+
+            
             {/* Page Header */}
             <div className="mb-6 flex justify-between items-center">
                 <div>

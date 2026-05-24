@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\FlashcardController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Other pages
     Route::get('/flashcards', fn() => Inertia::render('Flashcards'))->name('flashcards');
+
+
+    // Route::get('/flashcards', [FlashcardController::class, 'index'])->name('flashcards');
+    Route::post('/flashcards', [FlashcardController::class, 'generate_flashcards'])->name('flashcards.store');
+    Route::post('/flashcards/generate', [FlashcardController::class, 'get_generate_flashcards'])->name('flashcards.generate');
+    // Route::post('/flashcards/generate', [FlashcardController::class, 'generate'])->name('flashcards.generate');
+    Route::delete('/flashcards/{id}', [FlashcardController::class, 'destroy'])->name('flashcards.destroy');
+
     Route::get('/study-planner', fn() => Inertia::render('StudyPlanner'))->name('study-planner');
     Route::get('/history', fn() => Inertia::render('History'))->name('history');
     
