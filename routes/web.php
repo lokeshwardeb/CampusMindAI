@@ -40,8 +40,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/flashcards', fn() => Inertia::render('Flashcards'))->name('flashcards');
 
 
-    // Route::get('/flashcards', [FlashcardController::class, 'index'])->name('flashcards');
-    Route::post('/flashcards', [FlashcardController::class, 'generate_flashcards'])->name('flashcards.store');
+    Route::get('/flashcards', [FlashcardController::class, 'index'])->name('flashcards');
+
+
+    // Route::post('/flashcards', [FlashcardController::class, 'generate_flashcards'])->name('flashcards.store');
     Route::post('/flashcards/generate', [FlashcardController::class, 'get_generate_flashcards'])->name('flashcards.generate');
     // Route::post('/flashcards/generate', [FlashcardController::class, 'generate'])->name('flashcards.generate');
     Route::delete('/flashcards/{id}', [FlashcardController::class, 'destroy'])->name('flashcards.destroy');
