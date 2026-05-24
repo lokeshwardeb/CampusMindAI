@@ -28,7 +28,22 @@ class OpenRouterService
                 'X-Title'       => 'CampusMind AI',
                 'Content-Type'  => 'application/json',
             ])->post($this->baseUrl, [
-                'model' => 'meta-llama/llama-3-8b-instruct:free',
+
+            
+
+                // 'model' => 'openrouter/free',
+                  "model" => "arcee-ai/trinity-large-thinking:free",
+
+
+
+                // 'model' => 'meta-llama/llama-3-8b-instruct:free',
+                // 'model' => 'google/gemma-4-26b-a4b-it:free',
+                // 'model' => 'meta-llama/llama-3-8b-instruct:free',
+
+                // Highly reliable alternative options:
+// 'model' => 'google/gemini-2.5-flash', 
+// // or use the meta-llama standard variant:
+// 'model' => 'meta-llama/llama-3-8b-instruct',
                 'messages' => [
                     ['role' => 'system', 'content' => $systemInstruction],
                     ['role' => 'user', 'content' => $prompt]

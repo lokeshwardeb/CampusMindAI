@@ -1,62 +1,47 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\NotesController;
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes - CampusMind AI
-|--------------------------------------------------------------------------
-*/
+// 1. Public Routes
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'), // This checks if the route exists
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => "12.0",
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
 
+// 2. Authentication Routes (Include this early to ensure login/register exist)
+require __DIR__.'/auth.php';
+
+// 3. Protected Routes
 Route::middleware(['auth', 'verified'])->group(function () {
+    
+    Route::get('/dashboard', fn() => Inertia::render('Dashboard'))->name('dashboard');
 
-    // 1. Dashboard Panel
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard', [
-            // Example of passing live metrics down to your React view
-            'stats' => [
-                ['label' => 'Chats Today', 'count' => 12, 'icon' => '💬', 'color' => 'bg-indigo-50 text-indigo-600'],
-                ['label' => 'Quizzes Solved', 'count' => 8, 'icon' => '📝', 'color' => 'bg-emerald-50 text-emerald-600'],
-                ['label' => 'Flashcards Created', 'count' => 36, 'icon' => '🗂️', 'color' => 'bg-amber-50 text-amber-600'],
-                ['label' => 'Study Plans', 'count' => 5, 'icon' => '📅', 'color' => 'bg-blue-50 text-blue-600'],
-            ]
-        ]);
-    })->name('dashboard');
+    // AI Features (Single source of truth)
+    Route::get('/ai-chat', [ChatController::class, 'index'])->name('ai-chat');
+    Route::post('/ai-chat', [ChatController::class, 'store'])->name('ai-chat.store');
 
-    // 2. AI Chat Panel
-    Route::get('/ai-chat', function () {
-        return Inertia::render('AiChat');
-    })->name('ai-chat');
+    Route::get('/summarizer', [NotesController::class, 'index'])->name('summarizer');
+    Route::post('/summarizer', [NotesController::class, 'store'])->name('summarizer.store');
 
-    // 3. Summarizer Panel
-    Route::get('/summarizer', function () {
-        return Inertia::render('Summarizer');
-    })->name('summarizer');
+    Route::get('/quiz-generator', [QuizController::class, 'index'])->name('quiz-generator');
+    Route::post('/quiz-generator', [QuizController::class, 'store'])->name('quiz-generator.store');
 
-    // 4. Quiz Generator Panel
-    Route::get('/quiz-generator', function () {
-        return Inertia::render('QuizGenerator');
-    })->name('quiz-generator');
-
-    // 5. Flashcards Panel
-    Route::get('/flashcards', function () {
-        return Inertia::render('Flashcards');
-    })->name('flashcards');
-
-    // 6. Study Planner Panel
-    Route::get('/study-planner', function () {
-        return Inertia::render('StudyPlanner');
-    })->name('study-planner');
-
-    // 7. History Panel
-    Route::get('/history', function () {
-        return Inertia::render('History');
-    })->name('history');
-
-    // Placeholders for remaining sidebar items to prevent 404s
-    Route::get('/notes', function () { return Inertia::render('Dashboard'); })->name('notes');
-    Route::get('/bookmarks', function () { return Inertia::render('Dashboard'); })->name('bookmarks');
-    Route::get('/profile', function () { return Inertia::render('Dashboard'); })->name('profile');
-    Route::get('/settings', function () { return Inertia::render('Dashboard'); })->name('settings');
+    // Other pages
+    Route::get('/flashcards', fn() => Inertia::render('Flashcards'))->name('flashcards');
+    Route::get('/study-planner', fn() => Inertia::render('StudyPlanner'))->name('study-planner');
+    Route::get('/history', fn() => Inertia::render('History'))->name('history');
+    
+    // Profile
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
