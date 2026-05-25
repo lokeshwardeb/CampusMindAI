@@ -48,6 +48,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Route::post('/flashcards/generate', [FlashcardController::class, 'generate'])->name('flashcards.generate');
     Route::delete('/flashcards/{id}', [FlashcardController::class, 'destroy'])->name('flashcards.destroy');
 
+
+    Route::get('/notes', [NotesController::class, 'notes_index'])->name('notes.index');
+    Route::post('/notes', [NotesController::class, 'notes_store'])->name('notes.store');
+    Route::post('/notes/generate', [NotesController::class, 'notes_generate'])->name('notes.generate');
+    Route::delete('/notes/{note}', [NotesController::class, 'notes_destroy'])->name('notes.destroy');
+
+
+
+
     Route::get('/study-planner', fn() => Inertia::render('StudyPlanner'))->name('study-planner');
     Route::get('/history', fn() => Inertia::render('History'))->name('history');
     

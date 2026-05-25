@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, usePage } from '@inertiajs/react';
+import ApplicationLogo from '@/Components/ApplicationLogo';
 
 export default function AuthenticatedLayout({ children }) {
     const { url } = usePage();
@@ -28,8 +29,10 @@ export default function AuthenticatedLayout({ children }) {
                 <div>
                     {/* Brand */}
                     <div className="flex items-center gap-2 px-3 py-4 mb-4">
-                        <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white">C</div>
-                        <span className="font-bold text-lg text-white tracking-wide">CampusMind AI</span>
+                        {/* <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white">C</div>
+                        <span className="font-bold text-lg text-white tracking-wide">CampusMind AI</span> */}
+                    <ApplicationLogo></ApplicationLogo>
+
                     </div>
 
                     {/* Main Nav */}

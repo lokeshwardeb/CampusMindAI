@@ -121,4 +121,33 @@ class NotesController extends Controller
         $note->delete();
         return redirect()->route('summarizer');
     }
+
+
+
+
+    public function notes_index() {
+    return Inertia::render('Notes', ['notes' => auth()->user()->notes()->latest()->get()]);
 }
+
+public function notes_store(Request $request) {
+    $request->validate(['title' => 'required', 'content' => 'required']);
+    auth()->user()->notes()->create($request->all());
+    return redirect()->back();
+}
+
+public function notes_generate(Request $request, OpenRouterService $ai) {
+    $prompt = "Write comprehensive study notes about: " . $request->topic;
+    $content = $ai->askAI($prompt, "You are a concise academic note-taker.");
+    
+    auth()->user()->notes()->create([
+        'title' => 'AI Notes: ' . $request->topic,
+        'content' => $content
+    ]);
+    return redirect()->back();
+}
+
+
+}
+
+
+

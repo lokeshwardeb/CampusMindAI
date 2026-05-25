@@ -1,59 +1,239 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# CampusMind AI
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+AI-powered academic assistant platform designed to help students learn smarter, stay organized, and improve productivity through intelligent study tools and AI-driven features.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+CampusMind AI is a modern educational platform that combines artificial intelligence with student productivity tools. It helps students generate quizzes, create flashcards, summarize notes, manage study materials, and interact with AI-powered learning assistants.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The platform is designed to make studying more interactive, efficient, and personalized.
 
-## Learning Laravel
+CampusMind AI focuses on:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- Smart learning assistance
+- AI-generated study materials
+- Student productivity tools
+- Academic organization
+- Interactive learning experiences
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## ✨ Features
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 📚 AI Study Assistant
+- Ask academic questions instantly
+- Get simplified explanations
+- Topic breakdowns for complex subjects
+- AI-powered learning support
 
-### Premium Partners
+### 🧠 Flashcard Generator
+- Generate flashcards from any topic
+- AI-created question-answer pairs
+- Interactive study mode
+- Smart revision support
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### ❓ Quiz Generator
+- Create quizzes automatically
+- Multiple choice questions
+- Topic-based assessments
+- Instant feedback system
 
-## Contributing
+### 📝 Notes & Summaries
+- Upload notes or documents
+- Generate summaries automatically
+- Extract key points
+- Faster revision workflow
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 📂 Multi-File Support
+Supports:
+- PDF
+- DOCX
+- TXT
+- CSV
+- Images (OCR-ready structure)
 
-## Code of Conduct
+### 🎯 Personalized Learning
+- Topic-focused studying
+- Adaptive learning workflow
+- Smart recommendations
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 🌐 Modern UI/UX
+- Responsive design
+- Smooth animations
+- Student-friendly interface
+- Mobile compatible
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🛠️ Tech Stack
 
-## License
+### Frontend
+- React.js
+- Tailwind CSS
+- Axios
+- React Router
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Backend
+- Laravel
+- PHP
+- REST API
+
+### AI Integration
+- OpenRouter API
+- Groq API
+- Large Language Models (LLMs)
+
+### Database
+- MySQL
+
+### Deployment
+- cPanel / VPS / Cloud hosting
+
+---
+
+## 📦 Installation
+
+### 1️⃣ Clone Repository
+```bash
+git clone https://github.com/yourusername/campusmind-ai.git
+cd campusmind-ai
+```
+
+### 2️⃣ Install Frontend Dependencies
+```bash
+npm install
+```
+
+### 3️⃣ Install Backend Dependencies
+```bash
+composer install
+```
+
+### 4️⃣ Setup Environment Variables
+Create a `.env` file:
+
+```env
+APP_NAME=CampusMindAI
+
+OPENROUTER_API_KEY=your_api_key
+GROQ_API_KEY=your_api_key
+
+DB_DATABASE=campusmind
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 5️⃣ Run Migrations
+```bash
+php artisan migrate
+```
+
+### 6️⃣ Start Servers
+
+Frontend:
+```bash
+npm run dev
+```
+
+Backend:
+```bash
+php artisan serve
+```
+
+---
+
+## 🤖 AI Features
+
+### Current Capabilities
+- Flashcard generation
+- Quiz generation
+- Topic explanation
+- Study assistance
+- Summarization
+- Smart Q&A
+
+### Planned Features
+- OCR document understanding
+- AI study planner
+- Voice assistant
+- AI tutor mode
+- Learning analytics
+- Personalized recommendations
+
+---
+
+## 📁 Project Structure
+
+```
+campusmind-ai/
+│
+├── frontend/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   └── assets/
+│
+├── backend/
+│   ├── app/
+│   ├── routes/
+│   ├── database/
+│   └── controllers/
+│
+├── public/
+├── storage/
+└── README.md
+```
+
+---
+
+## 🔒 Security
+
+- API keys stored in `.env`
+- Backend protected API routes
+- Input validation
+- Secure authentication system
+
+---
+
+## 📌 Future Roadmap
+
+- AI Flashcards
+- AI Quiz Generator
+- Smart Notes System
+- OCR Support
+- Real-time Collaboration
+- AI Study Planner
+- LMS Integration
+- Voice-Based Learning
+- Mobile App
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a new branch
+3. Commit your changes
+4. Push to your branch
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+Developed by Lokeshwar Deb Protik and the CampusMind AI Team.
+
+---
+
+## 🌍 Vision
+
+CampusMind AI aims to become a complete AI-powered academic ecosystem for students, combining productivity, intelligent tutoring, and modern educational tools into one unified platform.
+
